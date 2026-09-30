@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MoJ Interpreting Offers: Old vs New Contract</title>
+<meta name="description" content="What a minimum-length face-to-face Ministry of Justice interpreting offer pays under the old contract and under the new contract from 5 October 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3E%C2%A3%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --surface-2: #f0f2f5; --text: #14171c; --muted: #5b6472;
+    --border: #e1e5eb; --accent: #0f766e; --accent-soft: #d8f0ec; --neg: #b42318; --neg-soft: #fde8e6;
+    --pos: #067647; --pos-soft: #dcf5e7; --shadow: 0 1px 2px rgba(16,24,40,.06), 0 1px 3px rgba(16,24,40,.08);
+    --radius: 14px; --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1116; --surface: #161a21; --surface-2: #1d222b; --text: #e8ebf0; --muted: #9aa4b2;
+      --border: #2a313c; --accent: #2dd4bf; --accent-soft: #123a36; --neg: #f97066; --neg-soft: #3b1614;
+      --pos: #47cd89; --pos-soft: #0f2e20; --shadow: 0 1px 2px rgba(0,0,0,.4); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1116; --surface: #161a21; --surface-2: #1d222b; --text: #e8ebf0; --muted: #9aa4b2;
+    --border: #2a313c; --accent: #2dd4bf; --accent-soft: #123a36; --neg: #f97066; --neg-soft: #3b1614;
+    --pos: #47cd89; --pos-soft: #0f2e20; --shadow: 0 1px 2px rgba(0,0,0,.4); color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 32px 16px 64px; }
+  header { display: flex; gap: 16px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+  h1 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.2rem); line-height: 1.15; margin: 0 0 8px; letter-spacing: -.01em; }
+  .lede { color: var(--muted); max-width: 70ch; margin: 0; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 600;
+           padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-bottom: 12px; }
+  .theme-btn { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 10px;
+               padding: 8px 12px; cursor: pointer; font: inherit; font-size: .85rem; box-shadow: var(--shadow); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 28px 0; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); }
+  .card .k { color: var(--muted); font-size: .82rem; }
+  .card .v { font-size: 1.7rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 4px; }
+  .card .v.neg { color: var(--neg); }
+  .card .s { color: var(--muted); font-size: .8rem; margin-top: 2px; }
+  section { margin-top: 36px; }
+  h2 { font-size: 1.2rem; margin: 0 0 12px; }
+  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+  .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 14px; border-bottom: 1px solid var(--border); }
+  .seg { display: inline-flex; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 3px; }
+  .seg button { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: .88rem; font-weight: 600;
+                padding: 7px 14px; border-radius: 8px; cursor: pointer; min-height: 32px; }
+  .seg button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+  .search { flex: 1 1 200px; min-width: 0; max-width: 320px; position: relative; }
+  .search input { width: 100%; font: inherit; font-size: .9rem; padding: 8px 12px; border-radius: 10px;
+                  border: 1px solid var(--border); background: var(--surface); color: var(--text); min-height: 36px; }
+  .search input:focus, .seg button:focus-visible, th button:focus-visible, .theme-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .count { color: var(--muted); font-size: .85rem; margin-left: auto; }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; font-variant-numeric: tabular-nums; }
+  thead th { position: sticky; top: 0; background: var(--surface-2); color: var(--muted); font-size: .76rem; font-weight: 600;
+             text-transform: uppercase; letter-spacing: .03em; text-align: right; padding: 0; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  thead tr.group th { text-align: center; padding: 8px 10px; text-transform: none; font-size: .8rem; color: var(--text); letter-spacing: 0; }
+  thead tr.group th.g { border-left: 1px solid var(--border); }
+  th button { all: unset; display: block; width: 100%; padding: 10px 12px; cursor: pointer; box-sizing: border-box; text-align: inherit; }
+  th button::after { content: ""; display: inline-block; width: 0; margin-left: 4px; }
+  th[aria-sort="ascending"] button::after { content: "▲"; width: auto; font-size: .6rem; }
+  th[aria-sort="descending"] button::after { content: "▼"; width: auto; font-size: .6rem; }
+  th.left, td.left { text-align: left; }
+  tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:hover td { background: var(--surface-2); }
+  td.town { font-weight: 600; }
+  td.gl, th.gl { border-left: 1px solid var(--border); }
+  td.old { color: var(--muted); }
+  td.new { font-weight: 600; }
+  .delta { display: inline-flex; align-items: center; gap: 8px; justify-content: flex-end; }
+  .chip { display: inline-block; padding: 2px 8px; border-radius: 999px; font-weight: 600; font-size: .82rem; }
+  .chip.neg { background: var(--neg-soft); color: var(--neg); }
+  .chip.pos { background: var(--pos-soft); color: var(--pos); }
+  .bar { width: 56px; height: 6px; border-radius: 3px; background: var(--surface-2); overflow: hidden; direction: rtl; }
+  .bar i { display: block; height: 100%; background: var(--neg); border-radius: 3px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+  .basis td, .basis th { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; white-space: normal; }
+  .basis th { background: var(--surface-2); font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+  .basis tr:last-child td { border-bottom: 0; }
+  .basis td:first-child { font-weight: 600; width: 26%; }
+  .formula { font-family: var(--mono); font-size: .92rem; background: var(--surface-2); border: 1px solid var(--border);
+             border-radius: 10px; padding: 12px 14px; overflow-x: auto; }
+  ul.notes { margin: 0; padding-left: 20px; color: var(--muted); }
+  ul.notes li { margin: 6px 0; }
+  ul.notes strong { color: var(--text); }
+  .summary td, .summary th { padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: right; }
+  .summary th { background: var(--surface-2); font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+  .summary td:first-child, .summary th:first-child { text-align: left; }
+  .summary tr:last-child td { border-bottom: 0; }
+  footer { margin-top: 40px; color: var(--muted); font-size: .82rem; }
+  .map-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0; }
+  .map-box { padding: 12px; border-right: 1px solid var(--border); }
+  .map-box svg { display: block; width: 100%; height: auto; }
+  .land { fill: var(--surface-2); stroke: var(--muted); stroke-opacity: .35; stroke-width: 1; }
+  .town-dot { cursor: pointer; stroke: var(--surface); stroke-width: 2; transition: r .15s; }
+  .town-dot:hover, .town-dot.sel { stroke: var(--text); }
+  .town-dot:focus-visible { outline: none; stroke: var(--accent); stroke-width: 3; }
+  .town-lbl { font-size: 11px; fill: var(--muted); pointer-events: none; paint-order: stroke; stroke: var(--surface-2); stroke-width: 3px; }
+  .town-lbl.sel { fill: var(--text); font-weight: 700; }
+  .detail { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .detail h3 { margin: 0; font-size: 1.25rem; }
+  .detail .sub { color: var(--muted); font-size: .85rem; margin-top: 2px; }
+  .kv { display: grid; grid-template-columns: 1fr auto auto auto; gap: 8px 14px; align-items: center; font-variant-numeric: tabular-nums; }
+  .kv .h { color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .03em; text-align: right; }
+  .kv .h:first-child { text-align: left; }
+  .kv .r { text-align: right; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 16px; font-size: .8rem; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+  tbody tr.sel td { background: var(--accent-soft); }
+  tbody tr { cursor: pointer; }
+  @media (max-width: 767px) { .map-grid { grid-template-columns: 1fr; } .map-box { border-right: 0; border-bottom: 1px solid var(--border); } }
+  @media (max-width: 767px) {
+    .wrap { padding-top: 20px; }
+    .count { width: 100%; margin-left: 0; }
+    .bar { display: none; }
+    tbody td { padding: 9px 10px; }
+  }
+  @media print {
+    .controls, .theme-btn { display: none; }
+    .panel, .card { box-shadow: none; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="badge">Ministry of Justice · face-to-face interpreting</div>
+      <h1>Old contract vs new contract from 5 October 2026</h1>
+      <p class="lede">What a minimum-length face-to-face Ministry of Justice interpreting offer pays under the contract that ends on
+        4 October 2026, against the contract that starts on 5 October 2026, for 24 court towns in the north of England and North Wales.</p>
+    </div>
+    <button class="theme-btn" id="theme" type="button" aria-label="Switch colour theme">Theme</button>
+  </header>
+
+  <div class="cards" aria-label="Key changes">
+    <div class="card"><div class="k">Same class, 1 hour guaranteed</div><div class="v neg">−£20.00</div><div class="s">per job, every town</div></div>
+    <div class="card"><div class="k">Same class, 2 hours guaranteed</div><div class="v neg">−£15.00</div><div class="s">per job, every town</div></div>
+    <div class="card"><div class="k">Plea hearing, Complex → Community</div><div class="v neg">−£27.00</div><div class="s">2 hours guaranteed (−£26.00 at 1 hour)</div></div>
+    <div class="card"><div class="k">Largest relative loss</div><div class="v neg" id="worst">–</div><div class="s" id="worst-s">–</div></div>
+  </div>
+
+  <section aria-labelledby="t-map">
+    <h2 id="t-map">Map</h2>
+    <div class="panel">
+      <div class="controls">
+        <div class="seg" role="group" aria-label="Guaranteed hours" data-group="hours">
+          <button type="button" data-hours="1" aria-pressed="false">1 hour guaranteed</button>
+          <button type="button" data-hours="2" aria-pressed="true">2 hours guaranteed</button>
+        </div>
+        <div class="seg" role="group" aria-label="Comparison shown on the map" data-group="cmp">
+          <button type="button" data-cmp="std" aria-pressed="true">Standard → Community</button>
+          <button type="button" data-cmp="cx" aria-pressed="false">Complex → Professional</button>
+          <button type="button" data-cmp="plea" aria-pressed="false">Plea</button>
+        </div>
+      </div>
+      <div class="map-grid">
+        <div class="map-box"><svg id="map" role="img" aria-label="Map of the court towns coloured by the change in the offer"></svg></div>
+        <div class="detail" id="detail" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-table">
+    <h2 id="t-table">Offer by town</h2>
+    <div class="panel">
+      <div class="controls">
+        <div class="search"><input id="q" type="search" placeholder="Filter towns…" aria-label="Filter towns"></div>
+        <div class="count" id="count" aria-live="polite"></div>
+      </div>
+      <div class="table-scroll">
+        <table id="tbl">
+          <thead>
+            <tr class="group">
+              <th colspan="2"></th>
+              <th class="g" colspan="3">Standard → Community (£20.00 / h)</th>
+              <th class="g" colspan="3">Complex → Professional (£26.00 / h)</th>
+              <th class="g" colspan="2">Plea hearing (Complex → Community)</th>
+            </tr>
+            <tr>
+              <th class="left" data-key="town" aria-sort="ascending"><button type="button">Town</button></th>
+              <th data-key="travel"><button type="button">Travel</button></th>
+              <th class="gl" data-key="os"><button type="button">Old</button></th>
+              <th data-key="nc"><button type="button">New</button></th>
+              <th data-key="dStd"><button type="button">Δ £ · Δ %</button></th>
+              <th class="gl" data-key="oc"><button type="button">Old</button></th>
+              <th data-key="np"><button type="button">New</button></th>
+              <th data-key="dCx"><button type="button">Δ £ · Δ %</button></th>
+              <th class="gl" data-key="nPlea"><button type="button">New</button></th>
+              <th data-key="dPlea"><button type="button">Δ £ · Δ %</button></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-summary">
+    <h2 id="t-summary">Change per job, by class move</h2>
+    <div class="panel table-scroll">
+      <table class="summary">
+        <thead><tr><th>Guaranteed</th><th>Same class</th><th>Plea: Complex → Community</th><th>Case management, children’s cases: Standard → Professional</th></tr></thead>
+        <tbody>
+          <tr><td>1 hour</td><td><span class="chip neg">−£20.00</span></td><td><span class="chip neg">−£26.00</span></td><td><span class="chip neg">−£14.00</span></td></tr>
+          <tr><td>2 hours</td><td><span class="chip neg">−£15.00</span></td><td><span class="chip neg">−£27.00</span></td><td><span class="chip neg">−£3.00</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede" style="margin-top:10px">The loss in pounds is the same in every town; the loss in percent is largest where travel pay is smallest.</p>
+  </section>
+
+  <section aria-labelledby="t-basis">
+    <h2 id="t-basis">Basis</h2>
+    <div class="panel table-scroll">
+      <table class="basis">
+        <thead><tr><th>Component</th><th>Old contract (to 4 Oct 2026)</th><th>New contract (from 5 Oct 2026)</th></tr></thead>
+        <tbody>
+          <tr><td>Hourly rate, face to face</td><td>Standard £20.00 · Complex £26.00</td><td>Community £20.00 · Professional £26.00</td></tr>
+          <tr><td>Guaranteed minimum</td><td>2 h court face to face · 1 h other bodies</td><td>2 h HMCTS face to face · 1 h other bodies</td></tr>
+          <tr><td>Enhancement payment (AEP)</td><td>£20.00 if 1 h guaranteed and booked ≤ 1 h · £15.00 if booked ≤ 2 h</td><td>None (withdrawn)</td></tr>
+          <tr><td>Travel, distance</td><td>£0.40 per mile one way beyond the first 5 miles, cap £80.00</td><td>£0.20 per mile each way beyond the first 5 miles each way, cap 400-mile round trip (£78.00)</td></tr>
+          <tr><td>Travel, time</td><td>£20.00 per hour one way beyond the first hour, cap £20.00</td><td>£10.00 per hour each way beyond the first 60 minutes each way, cap 2 hours round trip (£20.00)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-2" style="margin-top:16px">
+      <div>
+        <h2 style="font-size:1rem">Formula</h2>
+        <div class="formula">offer = guaranteed hours × hourly rate + AEP + travel<br>Δ £ = new − old<br>Δ % = (new − old) ÷ old</div>
+      </div>
+      <div>
+        <h2 style="font-size:1rem">Notes</h2>
+        <ul class="notes">
+          <li><strong>Travel</strong> is the median travel pay actually offered for jobs in each town, measured from one fixed home base. An interpreter based elsewhere will see different travel figures but the same Δ £.</li>
+          <li><strong>Travel is unchanged.</strong> For every town listed the old and new travel rules produce the same amount (the caps differ only beyond 200 miles one way).</li>
+          <li><strong>Class mapping</strong> follows the new Qualification Framework: first, preliminary and plea hearings are Community; trials, evidence, sentencing, appeals, substantive tribunals, children’s cases, case management after the first hearing and legal argument are Professional.</li>
+          <li><strong>Not included:</strong> urgency, out-of-hours and security uplifts, and the new “early acceptance” reward, whose value has not been published.</li>
+          <li>Amounts in pounds sterling, rounded to the penny.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Sources: thebigword, <em>Rate Guidance for Ministry of Justice Interpreting Assignments</em>, Version 8.0, September 2026 ·
+    <em>Ministry of Justice Qualification Framework v1</em>, July 2026 · <em>FAQ, WordSynk Network Interpreter App</em>.
+  </footer>
+</div>
+
+<script>
+(() => {
+  // Median travel pay offered per town (£), from one fixed home base.
+  const TOWNS = [["Beverley",26.53],["Blackburn",18.810000000000002],["Bradford",0.61],["Chester",37.275000000000006],["Crewe",37.33],["Doncaster",13],["Grimsby",39.37],["Harrogate",8.01],["Huddersfield",2.84],["Hull",28.14],["Leeds",1.76],["Leicester",57.45],["Lincoln",42.27],["Liverpool",31.14],["Manchester",12.29],["Mansfield",28.799999999999997],["Middlesbrough",38.65],["Mold",41.815],["Nottingham",38.26],["Preston",26.785],["Sheffield",10.864999999999998],["Wakefield",1.9049999999999998],["Warrington",19.82],["Wrexham",44.78]];
+  // Court town centres (lat, lng) and the coastline (lng, lat rings).
+  const COORDS = {"Sheffield":[53.3853,-1.4688],"Doncaster":[53.5214,-1.1278],"Mansfield":[53.1492,-1.2057],"Wakefield":[53.688,-1.5015],"Huddersfield":[53.6449,-1.7816],"Leeds":[53.7995,-1.5462],"Bradford":[53.7976,-1.7534],"Manchester":[53.4895,-2.2587],"Nottingham":[52.9481,-1.1475],"Lincoln":[53.2281,-0.5419],"Harrogate":[53.9925,-1.5377],"Crewe":[53.0928,-2.4302],"Warrington":[53.3924,-2.6048],"Blackburn":[53.7488,-2.4767],"Hull":[53.7481,-0.3258],"Beverley":[53.8404,-0.4286],"Leicester":[52.6309,-1.1307],"Preston":[53.7716,-2.721],"Grimsby":[53.567,-0.0818],"Chester":[53.1874,-2.8908],"Liverpool":[53.4077,-2.9907],"Wrexham":[53.0477,-2.9973],"Mold":[53.177,-3.1372],"Middlesbrough":[54.5744,-1.2329]};
+  const OUTLINE = [{"ring":[[-6.218,54.089],[-6.65,54.059],[-6.647,54.163],[-7.008,54.407],[-7.325,54.133],[-7.607,54.144],[-7.855,54.215],[-8.145,54.454],[-7.754,54.595],[-7.911,54.698],[-7.55,54.768],[-7.377,55.028],[-7.219,55.092],[-7.101,55.048],[-6.947,55.183],[-6.475,55.241],[-6.129,55.217],[-5.717,54.817],[-5.879,54.641],[-5.583,54.663],[-5.47,54.5],[-5.484,54.442],[-5.671,54.55],[-5.656,54.382],[-5.558,54.371],[-5.607,54.273],[-5.826,54.236],[-6.019,54.051],[-6.218,54.089]]},{"ring":[[-3.11,58.515],[-3.212,58.321],[-3.99,57.959],[-4.036,57.852],[-3.857,57.819],[-4.135,57.578],[-3.403,57.708],[-2.074,57.702],[-1.867,57.612],[-1.781,57.474],[-2.593,56.562],[-3.31,56.363],[-2.885,56.398],[-2.653,56.318],[-2.674,56.253],[-3.362,56.028],[-3.789,56.095],[-3.049,55.952],[-2.599,56.027],[-2.147,55.903],[-1.655,55.57],[-1.232,54.704],[-0.671,54.504],[-0.084,54.118],[-0.206,54.022],[0.115,53.609],[-0.27,53.737],[-0.66,53.724],[-0.294,53.692],[0.271,53.335],[0.356,53.16],[0.046,52.906],[0.28,52.809],[0.559,52.967],[1.056,52.959],[1.657,52.754],[1.747,52.469],[1.591,52.12],[1.232,51.971],[1.274,51.845],[1.188,51.803],[0.752,51.73],[0.898,51.689],[0.891,51.571],[0.425,51.466],[0.889,51.36],[1.415,51.363],[1.398,51.182],[1.044,51.047],[0.96,50.926],[0.205,50.763],[-0.785,50.765],[-1.416,50.897],[-1.334,50.821],[-2.031,50.725],[-1.962,50.628],[-2.036,50.603],[-2.999,50.717],[-3.405,50.632],[-3.68,50.24],[-4.195,50.393],[-4.728,50.29],[-5.119,50.038],[-5.434,50.104],[-5.622,50.051],[-5.656,50.132],[-4.894,50.534],[-4.583,50.776],[-4.523,50.977],[-4.296,51.027],[-4.188,51.189],[-3.136,51.205],[-2.433,51.741],[-3.293,51.39],[-3.562,51.414],[-3.891,51.592],[-4.235,51.569],[-4.091,51.66],[-4.386,51.741],[-4.902,51.626],[-5.168,51.741],[-5.262,51.88],[-5.183,51.95],[-4.218,52.277],[-3.98,52.542],[-4.079,52.608],[-4.101,52.915],[-4.683,52.806],[-4.269,53.145],[-3.764,53.308],[-3.326,53.347],[-3.098,53.26],[-3.166,53.395],[-3.065,53.427],[-2.919,53.305],[-2.75,53.31],[-3.065,53.513],[-2.925,53.733],[-3.032,53.774],[-3.027,53.906],[-2.9,53.961],[-2.846,54.135],[-3.166,54.128],[-3.592,54.564],[-3.465,54.773],[-3.036,54.953],[-3.55,54.947],[-3.958,54.781],[-4.253,54.847],[-4.517,54.758],[-4.818,54.846],[-4.911,54.689],[-5.032,54.761],[-5.173,54.986],[-5.056,54.988],[-4.677,55.501],[-4.892,55.699],[-4.872,55.874],[-4.584,55.939],[-4.844,56.051],[-4.8,56.158],[-5.228,55.886],[-5.223,56.066],[-4.997,56.233],[-5.084,56.197],[-5.41,55.995],[-5.386,55.77],[-5.556,55.39],[-5.731,55.334],[-5.681,55.624],[-5.504,55.802],[-5.623,55.813],[-5.61,56.055],[-5.188,56.758],[-5.652,56.532],[-6.134,56.707],[-5.731,56.853],[-5.861,56.903],[-5.591,57.102],[-5.562,57.233],[-5.795,57.379],[-5.802,57.468],[-5.582,57.547],[-5.745,57.668],[-5.608,57.881],[-5.157,57.881],[-5.413,58.07],[-5.338,58.239],[-5.008,58.263],[-5.09,58.385],[-5.017,58.567],[-4.433,58.513],[-3.053,58.635],[-3.11,58.515]]},{"ring":[[-7.219,55.092],[-7.377,55.028],[-7.55,54.768],[-7.911,54.698],[-7.754,54.595],[-8.145,54.454],[-7.855,54.215],[-7.607,54.144],[-7.325,54.133],[-7.008,54.407],[-6.647,54.163],[-6.65,54.059],[-6.176,54.054],[-6.348,53.941],[-6.142,53.578],[-6.027,52.927],[-6.217,52.543],[-6.463,52.345],[-6.325,52.247],[-6.89,52.159],[-6.966,52.25],[-7.003,52.166],[-7.527,52.099],[-8.058,51.826],[-8.409,51.889],[-8.336,51.793],[-8.408,51.712],[-9.296,51.498],[-9.835,51.483],[-9.525,51.681],[-9.58,51.689],[-10.121,51.601],[-9.599,51.874],[-10.341,51.799],[-10.379,51.869],[-9.91,52.123],[-10.39,52.135],[-10.357,52.207],[-10.132,52.282],[-9.772,52.25],[-9.906,52.404],[-9.632,52.547],[-8.783,52.68],[-8.99,52.755],[-9.175,52.635],[-9.917,52.57],[-9.465,52.823],[-9.394,52.896],[-9.462,52.947],[-9.299,53.098],[-8.93,53.207],[-9.514,53.238],[-9.626,53.334],[-9.876,53.343],[-9.795,53.395],[-10.091,53.413],[-10.117,53.549],[-9.721,53.604],[-9.91,53.658],[-9.902,53.727],[-9.578,53.805],[-9.579,53.88],[-9.914,53.864],[-9.856,54.095],[-9.934,54.075],[-9.977,54.187],[-10.093,54.156],[-10.056,54.258],[-9.562,54.309],[-9.146,54.21],[-9.002,54.288],[-8.546,54.241],[-8.623,54.347],[-8.23,54.507],[-8.133,54.641],[-8.764,54.681],[-8.377,54.889],[-8.393,55.02],[-8.275,55.146],[-7.667,55.256],[-7.557,55.122],[-7.659,54.971],[-7.478,55.047],[-7.518,55.248],[-7.302,55.299],[-7.366,55.36],[-6.962,55.238],[-7.219,55.092]]}];
+  const RATE = { standard: 20, complex: 26 };           // same amounts under both contracts
+  const AEP_OLD = { 1: 20, 2: 15 };                      // withdrawn from 5 October 2026
+
+  const gbp = n => '£' + n.toFixed(2);
+  const signed = n => (n < 0 ? '−£' : '+£') + Math.abs(n).toFixed(2);
+  const pct = (nw, old) => { const p = (nw - old) / old * 100; return (p < 0 ? '−' : '+') + Math.abs(Math.round(p)) + ' %'; };
+
+  let hours = 2, sortKey = 'town', sortDir = 1, query = '', cmp = 'std', selected = 'Hull';
+
+  const CMP = {
+    std:  { label: 'Standard → Community',    old: 'os', nw: 'nc' },
+    cx:   { label: 'Complex → Professional',  old: 'oc', nw: 'np' },
+    plea: { label: 'Plea: Complex → Community', old: 'oc', nw: 'nPlea' },
+  };
+  // Colour by relative loss: the band edges are fixed so the colours mean the same at 1 h and 2 h.
+  const BANDS = [[15, '#f59e0b', 'under 15 %'], [25, '#ef6c35', '15–25 %'], [40, '#dc2626', '25–40 %'], [Infinity, '#7f1d1d', '40 % or more']];
+  const bandOf = lossPct => BANDS.find(b => lossPct < b[0]);
+
+  // Projection as in the pay simulator: equirectangular, longitude scaled by cos(latitude),
+  // fitted here to the court towns (with a margin) rather than to the whole coastline.
+  const W = 460, H = 440, PAD = 34, K = Math.cos(53.5 * Math.PI / 180);
+  const pts = Object.values(COORDS);
+  const X0 = Math.min(...pts.map(p => p[1] * K)) - 0.35, X1 = Math.max(...pts.map(p => p[1] * K)) + 0.35;
+  const Y0 = Math.min(...pts.map(p => -p[0])) - 0.25, Y1 = Math.max(...pts.map(p => -p[0])) + 0.25;
+  const SC = Math.min((W - 2 * PAD) / (X1 - X0), (H - 2 * PAD) / (Y1 - Y0));
+  const OX = PAD + ((W - 2 * PAD) - (X1 - X0) * SC) / 2, OY = PAD + ((H - 2 * PAD) - (Y1 - Y0) * SC) / 2;
+  const px = (lat, lng) => [OX + (lng * K - X0) * SC, OY + (-lat - Y0) * SC];
+
+  function drawMap(data) {
+    const svg = document.getElementById('map');
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const land = OUTLINE.map(p => '<path class="land" d="' + p.ring.map((c, i) => {
+      const [x, y] = px(c[1], c[0]); return (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+    }).join('') + 'Z"/>').join('');
+    const c = CMP[cmp];
+    const placed = [];
+    const fits = b => b.x0 >= 2 && b.x1 <= W - 2 && b.y0 >= 2 && b.y1 <= H - 2 &&
+      !placed.some(q => b.x0 < q.x1 && b.x1 > q.x0 && b.y0 < q.y1 && b.y1 > q.y0);
+    const order = [...data].sort((a, b) => (b.town === selected) - (a.town === selected));
+    const marks = order.map(r => {
+      const [x, y] = px(...COORDS[r.town]); placed.push({ x0: x - 8, x1: x + 8, y0: y - 8, y1: y + 8 }); return { r, x, y };
+    });
+    const labels = marks.map(({ r, x, y }) => {
+      const w = r.town.length * 6.4 + 4, sel = r.town === selected ? ' sel' : '';
+      const tries = [[x + 10, y + 4, 'start', { x0: x + 9, x1: x + 9 + w, y0: y - 7, y1: y + 7 }],
+                     [x - 10, y + 4, 'end', { x0: x - 9 - w, x1: x - 9, y0: y - 7, y1: y + 7 }],
+                     [x, y - 12, 'middle', { x0: x - w / 2, x1: x + w / 2, y0: y - 23, y1: y - 9 }],
+                     [x, y + 20, 'middle', { x0: x - w / 2, x1: x + w / 2, y0: y + 9, y1: y + 23 }]];
+      const t = tries.find(c => fits(c[3]));
+      if (!t) return '';
+      placed.push(t[3]);
+      return `<text class="town-lbl${sel}" x="${t[0].toFixed(1)}" y="${t[1].toFixed(1)}" text-anchor="${t[2]}">${r.town}</text>`;
+    }).join('');
+    const dots = marks.map(({ r, x, y }) => {
+      const loss = (r[c.old] - r[c.nw]) / r[c.old] * 100, sel = r.town === selected ? ' sel' : '';
+      return `<circle class="town-dot${sel}" tabindex="0" role="button" data-town="${r.town}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}"
+                r="${sel ? 9 : 7}" fill="${bandOf(loss)[1]}"><title>${r.town}: ${gbp(r[c.old])} → ${gbp(r[c.nw])} (${pct(r[c.nw], r[c.old])})</title></circle>`;
+    }).reverse().join('') + labels;
+    svg.innerHTML = land + dots;
+    svg.querySelectorAll('.town-dot').forEach(d => {
+      const pick = () => { selected = d.dataset.town; render(); };
+      d.addEventListener('click', pick);
+      d.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+    });
+  }
+
+  function drawDetail(data) {
+    const r = data.find(x => x.town === selected) || data[0];
+    const line = (label, old, nw) =>
+      `<div>${label}</div><div class="r old">${gbp(old)}</div><div class="r new">${gbp(nw)}</div><div class="r">${cellDelta(nw, old)}</div>`;
+    document.getElementById('detail').innerHTML = `
+      <div><h3>${r.town}</h3><div class="sub">${hours} hour${hours > 1 ? 's' : ''} guaranteed · travel ${gbp(r.travel)} (unchanged)</div></div>
+      <div class="kv">
+        <div class="h">Class</div><div class="h">Old</div><div class="h">New</div><div class="h">Δ £ · Δ %</div>
+        ${line('Standard → Community', r.os, r.nc)}
+        ${line('Complex → Professional', r.oc, r.np)}
+        ${line('Plea: Complex → Community', r.oc, r.nPlea)}
+      </div>
+      <div class="legend" aria-label="Map colours: relative loss, ${CMP[cmp].label}">
+        ${BANDS.map(b => `<span><i style="background:${b[1]}"></i>${b[2]}</span>`).join('')}
+      </div>
+      <div class="sub">Map colours show the relative loss for <strong>${CMP[cmp].label}</strong>. Select a town on the map or in the table.</div>`;
+  }
+
+  function rows() {
+    return TOWNS.map(([town, travel]) => {
+      const os = RATE.standard * hours + AEP_OLD[hours] + travel;
+      const nc = RATE.standard * hours + travel;
+      const oc = RATE.complex * hours + AEP_OLD[hours] + travel;
+      const np = RATE.complex * hours + travel;
+      return { town, travel, os, nc, oc, np, nPlea: nc,
+               dStd: (nc - os) / os, dCx: (np - oc) / oc, dPlea: (nc - oc) / oc };
+    });
+  }
+
+  const chip = (nw, old) => `<span class="chip ${nw < old ? 'neg' : 'pos'}">${signed(nw - old)} · ${pct(nw, old)}</span>`;
+  function cellDelta(nw, old) {
+    const p = Math.abs((nw - old) / old);
+    const cls = nw < old ? 'neg' : 'pos';
+    return `<span class="delta"><span class="bar" aria-hidden="true"><i style="width:${Math.min(100, p * 160).toFixed(0)}%"></i></span>` +
+           `<span class="chip ${cls}">${signed(nw - old)} · ${pct(nw, old)}</span></span>`;
+  }
+
+  function render() {
+    let data = rows().filter(r => r.town.toLowerCase().includes(query));
+    data.sort((a, b) => {
+      const x = a[sortKey], y = b[sortKey];
+      return (typeof x === 'string' ? x.localeCompare(y) : x - y) * sortDir;
+    });
+    document.querySelector('#tbl tbody').innerHTML = data.map(r => `
+      <tr data-town="${r.town}"${r.town === selected ? ' class="sel"' : ''}>
+        <td class="left town">${r.town}</td>
+        <td>${gbp(r.travel)}</td>
+        <td class="gl old">${gbp(r.os)}</td><td class="new">${gbp(r.nc)}</td><td>${chip(r.nc, r.os)}</td>
+        <td class="gl old">${gbp(r.oc)}</td><td class="new">${gbp(r.np)}</td><td>${chip(r.np, r.oc)}</td>
+        <td class="gl new">${gbp(r.nPlea)}</td><td>${chip(r.nPlea, r.oc)}</td>
+      </tr>`).join('');
+    document.getElementById('count').textContent =
+      `${data.length} of ${TOWNS.length} towns · ${hours} hour${hours > 1 ? 's' : ''} guaranteed`;
+    const all = rows().sort((a, b) => a.dStd - b.dStd)[0];
+    document.getElementById('worst').textContent = pct(all.nc, all.os);
+    document.getElementById('worst-s').textContent = `${all.town}, Standard → Community, ${hours} h guaranteed`;
+    document.querySelectorAll('thead th[data-key]').forEach(th =>
+      th.setAttribute('aria-sort', th.dataset.key === sortKey ? (sortDir > 0 ? 'ascending' : 'descending') : 'none'));
+    document.querySelectorAll('#tbl tbody tr').forEach(tr =>
+      tr.addEventListener('click', () => { selected = tr.dataset.town; render(); }));
+    const everything = rows();
+    drawMap(everything);
+    drawDetail(everything);
+  }
+
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    if (b.dataset.hours) hours = +b.dataset.hours; else cmp = b.dataset.cmp;
+    b.parentElement.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    render();
+  }));
+  document.querySelectorAll('thead th[data-key] button').forEach(btn => btn.addEventListener('click', () => {
+    const key = btn.parentElement.dataset.key;
+    if (key === sortKey) sortDir = -sortDir; else { sortKey = key; sortDir = 1; }
+    render();
+  }));
+  document.getElementById('q').addEventListener('input', e => { query = e.target.value.trim().toLowerCase(); render(); });
+
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById('theme').addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
